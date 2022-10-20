@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 
 import {About,Footer,Header,Skills,Work} from "./containers"
 import {Navbar} from "./components"
@@ -13,7 +13,7 @@ function App() {
       <Work />
       <Skills />
       <Footer />
-      
+
     </div>
   );
 }

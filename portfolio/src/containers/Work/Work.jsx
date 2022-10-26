@@ -5,8 +5,63 @@ import { useState,useEffect } from 'react'
 import {AiFillEye,AiFillGithub} from 'react-icons/ai'
 import { motion } from 'framer-motion'
 import { AppWrap } from '../../wrapper'
+import {images} from '../../constants'
 
 const Work = () => {
+
+  const availableWork = [
+    {
+      // Link to deployed project
+      projectLink : "github.com",
+
+      // Link to github of the project
+      codeLink : "github.com",
+
+      // Title of the project.
+      Title : "This is a javaScript project.",
+
+      // Describe the project
+      Description : "Short Description of the project.",
+
+      imgUrl : images.about03,
+
+      tags : ['UI/UX']
+    },
+    {
+      // Link to deployed project
+      projectLink : "github.com",
+
+      // Link to github of the project
+      codeLink : "github.com",
+
+      // Title of the project.
+      Title : "This is a C# project.",
+
+      // Describe the project
+      Description : "Short Description of the project.",
+
+      imgUrl : images.about03,
+
+      tags : ['Backend']
+    },
+    {
+      // Link to deployed project
+      projectLink : "github.com",
+
+      // Link to github of the project
+      codeLink : "github.com",
+
+      // Title of the project.
+      Title : "This is a NodeJS project.",
+
+      // Describe the project
+      Description : "Short Description of the project.",
+
+      imgUrl : images.about03,
+
+      tags : ['MERN']
+    }
+  ]
 
   const [activeFilter, setActiveFilter] = useState('All')
 
@@ -38,11 +93,10 @@ const Work = () => {
     transition={{duration : 0.5,delayChildren : 0.5}}
     className="app__work-portfolio"
     >
-      {['A','B','C'].map((work,index) => (
+      {availableWork.map((work,index) => (
         <div className='app__work-item app__flex' key = {index}>
           <div className="app__work-img app__flex"> 
-            <img src={''} alt="" />
-
+            <img src={work.imgUrl} alt="" />
             <motion.div
             whileHover={{opacity : [0,1]}}
             transition={{duration : 0.25, ease : 'easeInOut',staggerChildren : 0.5}}

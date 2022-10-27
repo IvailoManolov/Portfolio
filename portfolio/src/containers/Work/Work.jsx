@@ -67,8 +67,25 @@ const Work = () => {
 
   const [animateCard, setAnimateCard] = useState({y : 0, opacity : 1})  
 
-  const handleWorkFilter = (item) =>  {
+  const [filterWork,setFilterWork] = useState(availableWork)
 
+  const handleWorkFilter = (item) =>  {
+    console.log(item)
+    setActiveFilter(item)
+    setAnimateCard([{y:100,opacity:0}])
+    
+    setTimeout(() => {
+      setAnimateCard([{y:100,opacity:1}])
+    },500)
+
+    if(item === 'All')
+    {
+      setFilterWork(availableWork)
+    }
+    else 
+    {
+      setFilterWork(availableWork.filter((work) => work.tags.includes(item)))
+    }
   }
 
   return (
@@ -93,7 +110,7 @@ const Work = () => {
     transition={{duration : 0.5,delayChildren : 0.5}}
     className="app__work-portfolio"
     >
-      {availableWork.map((work,index) => (
+      {filterWork.map((work,index) => (
         <div className='app__work-item app__flex' key = {index}>
           <div className="app__work-img app__flex"> 
             <img src={work.imgUrl} alt="" />

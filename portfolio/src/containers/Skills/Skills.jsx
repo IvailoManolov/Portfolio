@@ -13,55 +13,88 @@ const Skills = () => {
   const availableSkills = [
     {
       // Link to deployed project
-      projectLink : "github.com",
+      name : "Source Control",
 
       // Link to github of the project
-      codeLink : "github.com",
-
       // Title of the project.
-      Title : "This is a javaScript project.",
-
-      // Describe the project
-      Description : "Short Description of the project.",
-
-      imgUrl : images.about03,
-
-      tags : ['UI/UX']
+      icon : images.git
     },
     {
       // Link to deployed project
-      projectLink : "github.com",
+      name : "React",
 
       // Link to github of the project
-      codeLink : "github.com",
 
       // Title of the project.
-      Title : "This is a C# project.",
-
-      // Describe the project
-      Description : "Short Description of the project.",
-
-      imgUrl : images.about03,
-
-      tags : ['Backend']
+      icon : images.react
     },
     {
       // Link to deployed project
-      projectLink : "github.com",
+      name : "CSS/SCSS",
 
       // Link to github of the project
-      codeLink : "github.com",
 
       // Title of the project.
-      Title : "This is a NodeJS project.",
+      icon : images.sass
+    },
+    {
+      // Link to deployed project
+      name : "Node",
 
-      // Describe the project
-      Description : "Short Description of the project.",
+      // Link to github of the project
 
-      imgUrl : images.about03,
+      // Title of the project.
+      icon : images.node
+    },
+    {
+      // Link to deployed project
+      name : "API",
 
-      tags : ['MERN']
-    }
+      // Link to github of the project
+
+      // Title of the project.
+      icon : images.api
+    },
+    {
+      // Link to deployed project
+      name : "Html",
+
+      // Link to github of the project
+
+      // Title of the project.
+      icon : images.html
+    },
+    {
+      // Link to deployed project
+      name : "JS",
+
+      // Link to github of the project
+      // Title of the project.
+      icon : images.javascript
+    },
+  ]
+
+  const experience = [
+    {
+      name : "Software Engineer",
+      company : "Milestone",
+      description : "A full-stack software engineer."
+    },
+    {
+      name : "Senior Software Engineer",
+      company : "Google",
+      description : "A full-stack software engineer."
+    },
+    {
+      name : "Principal Software Engineer",
+      company : "Meta",
+      description : "A full-stack software engineer."
+    },
+    {
+      name : "Senior Software Engineer",
+      company : "Netflix",
+      description : "A full-stack software engineer."
+    },
   ]
 
   return (
@@ -86,14 +119,43 @@ const Skills = () => {
               </div>
 
               <p className="p-text"> {skill.name} </p>
-              
+
             </motion.div>
         ))}
 
+      </motion.div>
+
+      <motion.div
+      className='app__skills-exp'
+      >
+        {experience.map((work) => (
+          <>
+          <motion.div
+            whileInView={{opacity : [0,1]}}
+            transition={{duration:0.5}}
+            className="app__skills-exp-work"
+            data-tip
+            data-for = {work.name}
+            key = {work.name}
+          >
+
+            <h4 className='bold-text'>{work.name}</h4>
+            <p className='p-text'>{work.company}</p>
+          </motion.div>
+          <ReactToolTip
+          id = {work.name}
+          effect="solid"
+          arrowColor='#fff'
+          className='skills-tooltip'
+          >
+            {work.description}
+          </ReactToolTip>
+          </>
+        ))}
       </motion.div>
     </div>
     </>
   )
 }
 
-export default Skills
+export default AppWrap(Skills,'skills')
